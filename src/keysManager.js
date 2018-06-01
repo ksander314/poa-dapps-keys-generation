@@ -6,12 +6,12 @@ export default class KeysManager {
   async init({web3, netId, addresses}){
     this.web3_10 = new Web3(web3.currentProvider);
     const {KEYS_MANAGER_ADDRESS} = addresses;
-    console.log('Keys Manager ', KEYS_MANAGER_ADDRESS);
+    console.log('Keys Manager ', '0x1a735dc5cbbd2d7c2e270dd375d4fa0e9921a195');
     const branch = helpers.getBranch(netId);
 
     let KeysManagerAbi = await helpers.getABI(branch, 'KeysManager')
 
-    this.keysInstance = new this.web3_10.eth.Contract(KeysManagerAbi, KEYS_MANAGER_ADDRESS);
+    this.keysInstance = new this.web3_10.eth.Contract(KeysManagerAbi, '0x1a735dc5cbbd2d7c2e270dd375d4fa0e9921a195');
   }
 
   async isInitialKeyValid(initialKey) {

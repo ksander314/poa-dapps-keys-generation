@@ -32,6 +32,10 @@ let getWeb3 = () => {
               netIdName = 'Core'
               console.log('This is Core')
               break
+	  case "81":
+		netIdName = 'TestNetwork1'
+		console.log('This is TestNetwork1')
+		break
             default:
               netIdName = 'Unknown'
               errorMsg = `You aren't connected to POA Network. 
