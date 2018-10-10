@@ -109,9 +109,9 @@ class App extends Component {
     console.log(isValid);
     if(Number(isValid) !== 1){
       this.setState({loading:false});
-      const invalidKeyMsg = `The key is invalid initial Key<br/>
-      or you're connect to incorrect chain!<br/>
-      Please make sure you have loaded correct initial key in Metamask.<br/><br/>
+      const invalidKeyMsg = `The key is an invalid Initial key<br/>
+      or you're connected to the incorrect chain!<br/>
+      Please make sure you have loaded correct Initial key in MetaMask.<br/><br/>
       <b>Your current selected key is</b> <i>${initialKey}</i><br/>
       <b>Current Network ID</b> is <i>${this.state.web3Config.netId}</i>`
       swal({
@@ -131,7 +131,7 @@ class App extends Component {
         sender: initialKey
       }).then(async (receipt) => {
         console.log(receipt);
-        if (receipt.status == "0x1") {
+        if (receipt.status === true || receipt.status === "0x1") {
           this.setState({loading: false})
           swal("Congratulations!", "Your keys are generated!", "success");
           await this.generateZip({mining, voting, payout, netIdName: this.state.web3Config.netIdName});
@@ -156,7 +156,7 @@ class App extends Component {
         let content = document.createElement("div");
         let msg;
         if (error.message.includes(constants.userDeniedTransactionPattern))
-          msg = `Error: User ${constants.userDeniedTransactionPattern}`
+          msg = `Error: ${constants.userDeniedTransactionPattern}`
         else
           msg = error.message
         content.innerHTML = `<div>
